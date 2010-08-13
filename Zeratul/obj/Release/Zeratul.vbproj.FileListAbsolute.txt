@@ -1,0 +1,10 @@
+C:\Users\Thim\Desktop\iPhone_dev\Zeratul\Zeratul\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Thim\Desktop\iPhone_dev\Zeratul\Zeratul\obj\Release\Zeratul.Resources.resources
+C:\Users\Thim\Desktop\iPhone_dev\Zeratul\Zeratul\obj\Release\Zeratul.vbproj.GenerateResource.Cache
+C:\Users\Thim\Desktop\iPhone_dev\Zeratul\Zeratul\obj\Release\Zeratul.exe
+C:\Users\Thim\Desktop\iPhone_dev\Zeratul\Zeratul\obj\Release\Zeratul.xml
+C:\Users\Thim\Desktop\iPhone_dev\Zeratul\Zeratul\obj\Release\Zeratul.pdb
+C:\Users\Thim\Desktop\iPhone_dev\Zeratul\Zeratul.exe
+C:\Users\Thim\Desktop\iPhone_dev\Zeratul\Zeratul.pdb
+C:\Users\Thim\Desktop\iPhone_dev\Zeratul\Zeratul.xml
+C:\Users\Thim\Desktop\iPhone_dev\Zeratul\Zeratul\obj\Release\Zeratul.zForm.resources

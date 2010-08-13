@@ -1,0 +1,16 @@
+Current Todos for Zeratul:
+
+	Easy stuff:
+	
+	 - Fix the bug on startup. Or actually its not a bug. 
+	   Just a slow connection to the iDevice.
+
+	Advanced stuff:
+ 
+	 - Instead of using a iRecovery encrypted. Why not just
+	   implement iRecovery into Zeratul. This can be done by
+	   using MobileDevice-vb by @fallensn0w. But the file upload
+	   isnt supported.
+	  
+	 - Implement iRecovery Shell. This could be advanced to do
+	   or just really easy. It depends on the developers way.

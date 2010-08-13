@@ -1,0 +1,29 @@
+	Zeratul - GUI for iRecovery Strikes Back! :)
+---------------------------------------------------------------
+
+A better and much more smaller version of giRecovery!
+I wanted to rewrite giRecovery since the code was so
+messed up and all that shit. The GUI wasn't really
+clean either so i added some minor tweeks to Zeratul.
+
+And since i didn't want radio buttons and all that stuff
+i implemented code prefix before typing command in Zeratul.
+Take a look below and you'll understand Zeratul very well!
+	
+	Information about Zeratul
+---------------------------------------------------------------
+  
+ATUHOR: Fallensn0w
+DATE:   2010-08-09
+FINISH: 2010-08-09 ( Still in beta progress )
+NOTE:   Yes, i took the name ''Zeratul'' from StarCraft series.
+	    That's  becuase he's one of my favourites and i thought
+	    it would like suit this appliation with name of Zeratul.
+GOAL:	Remaking giRecovery and make it more cleaner to use.
+		And improving other stuff like speed.
+BUGS:   When starting, i had to make the output window visible.
+		That is because the program is initializing everything.
+		But its so shortly that you dont mind it. :)
+
+
+--> http://fallensn0w.host22.com <--

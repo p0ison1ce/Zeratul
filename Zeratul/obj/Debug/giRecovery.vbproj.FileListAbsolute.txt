@@ -1,0 +1,10 @@
+C:\Users\Thim\AppData\Local\Temporary Projects\giRecovery\bin\Debug\giRecovery.exe
+C:\Users\Thim\AppData\Local\Temporary Projects\giRecovery\bin\Debug\giRecovery.pdb
+C:\Users\Thim\AppData\Local\Temporary Projects\giRecovery\bin\Debug\giRecovery.xml
+C:\Users\Thim\AppData\Local\Temporary Projects\giRecovery\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Thim\AppData\Local\Temporary Projects\giRecovery\obj\Debug\giRecovery.Form1.resources
+C:\Users\Thim\AppData\Local\Temporary Projects\giRecovery\obj\Debug\giRecovery.Resources.resources
+C:\Users\Thim\AppData\Local\Temporary Projects\giRecovery\obj\Debug\giRecovery.vbproj.GenerateResource.Cache
+C:\Users\Thim\AppData\Local\Temporary Projects\giRecovery\obj\Debug\giRecovery.exe
+C:\Users\Thim\AppData\Local\Temporary Projects\giRecovery\obj\Debug\giRecovery.xml
+C:\Users\Thim\AppData\Local\Temporary Projects\giRecovery\obj\Debug\giRecovery.pdb
