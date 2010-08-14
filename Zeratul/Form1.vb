@@ -27,6 +27,51 @@ Public Class zForm
     Dim new_not_found = "No iPhone/iPod Touch found." & vbCrLf
 #End Region
 
+#Region "  Right Click Menu stuff"
+    Private Sub CutToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CutToolStripMenuItem.Click
+        textBox2.Cut()
+    End Sub
+    Private Sub CopyToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CopyToolStripMenuItem.Click
+        textBox2.Copy()
+    End Sub
+    Private Sub PasteToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PasteToolStripMenuItem.Click
+        textBox2.Paste()
+    End Sub
+#End Region
+
+#Region "  Extra functions"
+
+#Region " Input / Output Functions"
+    Public Function GetFileContents(ByVal FullPath As String, Optional ByRef ErrInfo As String = "") As String
+        Dim strContents As String = ""
+        Dim objReader As StreamReader
+        Try
+
+            objReader = New StreamReader(FullPath)
+            strContents = objReader.ReadToEnd()
+            objReader.Close()
+
+        Catch Ex As Exception
+            ErrInfo = Ex.Message
+        End Try
+        Return strContents
+    End Function
+
+    Public Function SaveTextToFile(ByVal strData As String, ByVal FullPath As String, Optional ByVal ErrInfo As String = "") As Boolean
+        Dim bAns As Boolean = False, objReader As StreamWriter
+        Try
+            objReader = New StreamWriter(FullPath)
+            objReader.Write(strData)
+            objReader.Close()
+            bAns = True
+        Catch Ex As Exception
+            ErrInfo = Ex.Message
+        End Try
+        Return bAns
+    End Function
+#End Region
+
+#End Region
 
 #Region "Stuff for reading iRecovery.exe"
     Private Sub Proc_OutputDataReceived(ByVal sender As Object, ByVal e As System.Diagnostics.DataReceivedEventArgs) Handles Proc.OutputDataReceived
@@ -78,6 +123,15 @@ Public Class zForm
 
     Private Sub zForm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Me.Text = "Zeratul -- Version: " & iVersion & " -- By: Fallensn0w"
+
+        If System.IO.File.Exists("Zeratul.bat") = False Then
+            BatData = _
+                            ": Zeratul.bat" & vbCrLf & ": Purpose: Used for fixing the startup bug!" & vbCrLf & "" & vbCrLf & "@echo off" & vbCrLf & _
+                            ":Fallensn0w" & vbCrLf & "set /p ""CMD=" & vbCrLf & "%CMD%" & vbCrLf & "CLS" & vbCrLf & "GoTo Fallensn0w" & vbCrLf
+
+            SaveTextToFile(BatData, "Zeratul.bat")
+
+        End If
 
         Proc = New Process
         Proc.StartInfo.FileName = "zeratul.bat"
@@ -141,38 +195,6 @@ Public Class zForm
             LockTheOutputTextToolStripMenuItem.Checked = False
         End If
     End Sub
-
-#Region "  Right Click Menu stuff"
-    Private Sub CutToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CutToolStripMenuItem.Click
-        textBox2.Cut()
-    End Sub
-    Private Sub CopyToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CopyToolStripMenuItem.Click
-        textBox2.Copy()
-    End Sub
-    Private Sub PasteToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PasteToolStripMenuItem.Click
-        textBox2.Paste()
-    End Sub
-#End Region
-
-
-#Region "  Extra functions"
-#Region " Input / Output Functions"
-    Public Function GetFileContents(ByVal FullPath As String, Optional ByRef ErrInfo As String = "") As String
-        Dim strContents As String = ""
-        Dim objReader As StreamReader
-        Try
-
-            objReader = New StreamReader(FullPath)
-            strContents = objReader.ReadToEnd()
-            objReader.Close()
-
-        Catch Ex As Exception
-            ErrInfo = Ex.Message
-        End Try
-        Return strContents
-    End Function
-#End Region
-#End Region
 
     Private Sub zForm_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Resize
         If Me.Width <= 615 Then
