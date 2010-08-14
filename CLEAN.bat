@@ -1,5 +1,6 @@
 @echo off
-: By:       Fallensn0w
+
+: By:        Fallensn0w
 : Usage:  Clean up before pushing to gitHub.
 
 
@@ -7,6 +8,7 @@ set AppName=Zeratul
 
 
 : del %CD%\%AppName%.exe
+del %CD%\%AppName%.bat
 
 del %CD%\%AppName%.pdb
 del %CD%\%AppName%.xml
