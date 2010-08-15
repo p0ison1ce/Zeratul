@@ -4,7 +4,7 @@ Public Class zForm
 
     Public WithEvents Proc As Process
 
-    Dim iVersion As String = "0.2 (Sn0w Rabbit)"
+    Dim iVersion As String = "0.2.5.1 (Dark Sn0w Rabbit)"
 
 #Region "Outputs from iRecovery.exe" ' (In order by iRecovery.exe)
     Dim iRecoveryInfo As String = "iRecovery - Recovery Utility" & vbCrLf & "by westbaer" & vbCrLf & "Thanks to pod2g, tom3q, planetbeing, geohot and posixninja."
@@ -83,11 +83,44 @@ Public Class zForm
     End Sub
 #End Region
 
+    Private Sub zCheck(ByVal Location_VersionFile As String, ByVal Location_Zeratul As String)
+        ' A beta version of zCheck.
+        ' A way to search for new verisons for Zeratul using a file on the host.
+
+        If My.Computer.Network.IsAvailable Then
+
+            If System.IO.File.Exists("temp") Then System.IO.File.Delete("temp")
+            My.Computer.Network.DownloadFile(Location_VersionFile, "temp")
+            temp = GetFileContents("temp")
+
+            If Not temp = iVersion Then
+
+                curr = MsgBox( _
+                                             "A new update of Zeratul was found!" & vbCrLf & vbCrLf & _
+                                             "Current Version: " & iVersion & vbCrLf & _
+                                             "Available for download: " & temp & vbCrLf & vbCrLf & _
+                                             "Downloading a new version is strongly recommended" & vbCrLf & _
+                                             "Woud you like to download the new version ?", _
+                MsgBoxStyle.YesNo)
+
+                If curr = vbYes Then
+                    My.Computer.Network.DownloadFile(Location_Zeratul, Environment.GetFolderPath(Environment.SpecialFolder.Desktop) & "\Zeratul.zip")
+                    MsgBox("Zeratul Version " & temp & " is now downloaded and located at your desktop.")
+                    End
+                End If
+
+            End If
+
+
+        End If
+    End Sub
+
     Private Sub button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles button1.Click
         button1.Text = "Sending.." : button1.Enabled = False
 
 
         If RadioButton1.Checked Then
+            'Proc.StandardInput.WriteLine(textBox1.Text)
             Proc.StandardInput.WriteLine("irecovery.exe -c " & Chr(34) & textBox1.Text & Chr(34))
             textBox2.Text += "Zeratul Console -> " & textBox1.Text
         End If
@@ -109,9 +142,6 @@ Public Class zForm
 
         button1.Text = "Send" : button1.Enabled = True
 
-
-        textBox2.SelectionStart = Len(textBox2.Text)
-
     End Sub
 
     Private Sub button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles button2.Click
@@ -121,7 +151,13 @@ Public Class zForm
     End Sub
 
 
-    Private Sub zForm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub zForm_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+        Proc.StandardInput.WriteLine("/exit")
+    End Sub
+
+
+    Private Sub zLoad(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
         Me.Text = "Zeratul -- Version: " & iVersion & " -- By: Fallensn0w"
 
         If System.IO.File.Exists("Zeratul.bat") = False Then
@@ -134,15 +170,19 @@ Public Class zForm
         End If
 
         Proc = New Process
-        Proc.StartInfo.FileName = "zeratul.bat"
+        Proc.StartInfo.FileName = "Zeratul.bat"
+
+        ' this could work.
+        'Proc.StartInfo.FileName = "irecovery.exe"
+        ' Proc.StartInfo.Arguments = " -s"
+
         Proc.StartInfo.RedirectStandardInput = True : Proc.StartInfo.RedirectStandardOutput = True
         Proc.StartInfo.UseShellExecute = False : Proc.StartInfo.CreateNoWindow = True
         Proc.Start.ToString()
 
         Proc.BeginOutputReadLine()
 
-
-
+        zButton_Update(sender, e)
 
     End Sub
 
@@ -156,10 +196,11 @@ Public Class zForm
         End If
     End Sub
 
-    Private Sub textBox2_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles textBox2.TextChanged
+    Private Sub RemoveStuff(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles textBox2.TextChanged
 
         ' Cleaning stuff from iRecovery that doesn't give any useful information... / Making everything look CLEANER.
-        textBox2.Text = textBox2.Text.Replace("", "")
+
+        textBox2.Text = textBox2.Text.Replace("", "") ' ive seriously no idea why it pop-ups a female icon lol
 
         textBox2.Text = textBox2.Text.Replace("irecovery.exe -c", Nothing)
         textBox2.Text = textBox2.Text.Replace("irecovery.exe -k", Nothing)
@@ -168,17 +209,19 @@ Public Class zForm
         textBox2.Text = textBox2.Text.Replace("irecovery.exe -r", new_ResettingUSB)
 
         textBox2.Text = Replace(textBox2.Text, iRecoveryInfo, Nothing)
-        textBox2.Text = Replace(textBox2.Text, Chr(34) & vbCrLf, Nothing)
-        textBox2.Text = Replace(textBox2.Text, Chr(34), Nothing)
         textBox2.Text = Replace(textBox2.Text, Split(old_Found, vbCrLf)(1), Nothing)
 
         textBox2.Text = Replace(textBox2.Text, old_Found, new_Found)
         textBox2.Text = Replace(textBox2.Text, Split(old_Found, vbCrLf)(0), new_Found)
         textBox2.Text = Replace(textBox2.Text, not_found, new_not_found)
+
         textBox2.Text = Replace(textBox2.Text, irecv_upload, Nothing)
         textBox2.Text = Replace(textBox2.Text, irecv_exploit, Nothing)
         textBox2.Text = Replace(textBox2.Text, irecv_list, ZeratulConsole)
         textBox2.Text = Replace(textBox2.Text, irecv_list_Sending, ZeratulConsole)
+
+        textBox2.SelectionStart = Len(textBox2.Text)
+        textBox2.ScrollToCaret()
 
     End Sub
 
@@ -203,8 +246,13 @@ Public Class zForm
     End Sub
 
     Private Sub textBox1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles textBox1.TextChanged
-        If InStr(textBox1.Text, "%desktop%") Then textBox1.Text = Replace(textBox1.Text, "%desktop%", Environment.GetFolderPath(Environment.SpecialFolder.Desktop)) : textBox1.SelectionStart = Len(textBox1.Text)
+        If InStr(textBox1.Text, "$d") Then _
+            textBox1.Text = Replace(textBox1.Text, "$d", Environment.GetFolderPath(Environment.SpecialFolder.Desktop)) : textBox1.SelectionStart = Len(textBox1.Text)
     End Sub
 
+    Private Sub zButton_Update(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
+        zCheck("http://fallensn0w.host22.com/Zeratul_Version", _
+                   "http://fallensn0w.host22.com/Zeratul.zip")
+    End Sub
 
 End Class
