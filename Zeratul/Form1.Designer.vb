@@ -41,6 +41,7 @@ Partial Class zForm
         Me.CutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.CopyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.PasteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.Button3 = New System.Windows.Forms.Button
         Me.textBox2_Menu.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -49,7 +50,7 @@ Partial Class zForm
         Me.textBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.textBox1.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.textBox1.Location = New System.Drawing.Point(10, 320)
+        Me.textBox1.Location = New System.Drawing.Point(9, 335)
         Me.textBox1.Name = "textBox1"
         Me.textBox1.Size = New System.Drawing.Size(463, 29)
         Me.textBox1.TabIndex = 1
@@ -61,7 +62,7 @@ Partial Class zForm
         Me.button2.Cursor = System.Windows.Forms.Cursors.Hand
         Me.button2.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.button2.ForeColor = System.Drawing.Color.Red
-        Me.button2.Location = New System.Drawing.Point(580, 318)
+        Me.button2.Location = New System.Drawing.Point(579, 335)
         Me.button2.Name = "button2"
         Me.button2.Size = New System.Drawing.Size(76, 29)
         Me.button2.TabIndex = 4
@@ -74,7 +75,7 @@ Partial Class zForm
         Me.button1.BackColor = System.Drawing.SystemColors.Control
         Me.button1.Cursor = System.Windows.Forms.Cursors.Hand
         Me.button1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.button1.Location = New System.Drawing.Point(479, 318)
+        Me.button1.Location = New System.Drawing.Point(478, 335)
         Me.button1.Name = "button1"
         Me.button1.Size = New System.Drawing.Size(95, 29)
         Me.button1.TabIndex = 3
@@ -88,18 +89,18 @@ Partial Class zForm
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.textBox2.Cursor = System.Windows.Forms.Cursors.Default
         Me.textBox2.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.textBox2.Location = New System.Drawing.Point(10, 12)
+        Me.textBox2.Location = New System.Drawing.Point(9, 10)
         Me.textBox2.Multiline = True
         Me.textBox2.Name = "textBox2"
         Me.textBox2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.textBox2.Size = New System.Drawing.Size(646, 303)
+        Me.textBox2.Size = New System.Drawing.Size(646, 321)
         Me.textBox2.TabIndex = 2
         Me.textBox2.Text = "Welcome to Zeratul for the Windows Platform!" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'Timer1
         '
         Me.Timer1.Enabled = True
-        Me.Timer1.Interval = 1000
+        Me.Timer1.Interval = 10
         '
         'RadioButton1
         '
@@ -107,7 +108,7 @@ Partial Class zForm
         Me.RadioButton1.AutoSize = True
         Me.RadioButton1.Checked = True
         Me.RadioButton1.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RadioButton1.Location = New System.Drawing.Point(295, 353)
+        Me.RadioButton1.Location = New System.Drawing.Point(252, 373)
         Me.RadioButton1.Name = "RadioButton1"
         Me.RadioButton1.Size = New System.Drawing.Size(84, 19)
         Me.RadioButton1.TabIndex = 5
@@ -121,7 +122,7 @@ Partial Class zForm
         Me.RadioButton2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RadioButton2.AutoSize = True
         Me.RadioButton2.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RadioButton2.Location = New System.Drawing.Point(383, 353)
+        Me.RadioButton2.Location = New System.Drawing.Point(340, 373)
         Me.RadioButton2.Name = "RadioButton2"
         Me.RadioButton2.Size = New System.Drawing.Size(88, 19)
         Me.RadioButton2.TabIndex = 6
@@ -134,11 +135,11 @@ Partial Class zForm
         Me.RadioButton3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RadioButton3.AutoSize = True
         Me.RadioButton3.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RadioButton3.Location = New System.Drawing.Point(475, 353)
+        Me.RadioButton3.Location = New System.Drawing.Point(434, 373)
         Me.RadioButton3.Name = "RadioButton3"
-        Me.RadioButton3.Size = New System.Drawing.Size(69, 19)
+        Me.RadioButton3.Size = New System.Drawing.Size(108, 19)
         Me.RadioButton3.TabIndex = 7
-        Me.RadioButton3.Text = "Payload"
+        Me.RadioButton3.Text = "Exploit Payload"
         Me.RadioButton3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.RadioButton3.UseVisualStyleBackColor = True
         '
@@ -147,7 +148,7 @@ Partial Class zForm
         Me.RadioButton4.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RadioButton4.AutoSize = True
         Me.RadioButton4.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RadioButton4.Location = New System.Drawing.Point(548, 353)
+        Me.RadioButton4.Location = New System.Drawing.Point(547, 371)
         Me.RadioButton4.Name = "RadioButton4"
         Me.RadioButton4.Size = New System.Drawing.Size(108, 19)
         Me.RadioButton4.TabIndex = 8
@@ -158,13 +159,14 @@ Partial Class zForm
         'LinkLabel1
         '
         Me.LinkLabel1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.LinkLabel1.AutoSize = True
         Me.LinkLabel1.Font = New System.Drawing.Font("Arial Black", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LinkLabel1.Location = New System.Drawing.Point(7, 352)
+        Me.LinkLabel1.Location = New System.Drawing.Point(144, 372)
         Me.LinkLabel1.Name = "LinkLabel1"
-        Me.LinkLabel1.Size = New System.Drawing.Size(217, 18)
+        Me.LinkLabel1.Size = New System.Drawing.Size(90, 18)
         Me.LinkLabel1.TabIndex = 9
         Me.LinkLabel1.TabStop = True
-        Me.LinkLabel1.Text = "http://fallensn0w.host22.com"
+        Me.LinkLabel1.Text = "Fallensn0w"
         '
         'textBox2_Menu
         '
@@ -213,18 +215,28 @@ Partial Class zForm
         Me.PasteToolStripMenuItem.Size = New System.Drawing.Size(194, 22)
         Me.PasteToolStripMenuItem.Text = "Paste"
         '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(9, 370)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(129, 22)
+        Me.Button3.TabIndex = 10
+        Me.Button3.Text = "Check for updates"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
         'zForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(668, 375)
-        Me.Controls.Add(Me.textBox2)
+        Me.ClientSize = New System.Drawing.Size(668, 395)
+        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.textBox1)
-        Me.Controls.Add(Me.LinkLabel1)
-        Me.Controls.Add(Me.RadioButton4)
+        Me.Controls.Add(Me.textBox2)
         Me.Controls.Add(Me.button1)
         Me.Controls.Add(Me.RadioButton3)
+        Me.Controls.Add(Me.RadioButton4)
         Me.Controls.Add(Me.button2)
+        Me.Controls.Add(Me.LinkLabel1)
         Me.Controls.Add(Me.RadioButton2)
         Me.Controls.Add(Me.RadioButton1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -253,5 +265,6 @@ Partial Class zForm
     Friend WithEvents CopyToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ClearTextToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents PasteToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents Button3 As System.Windows.Forms.Button
 
 End Class
