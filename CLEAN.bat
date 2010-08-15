@@ -13,6 +13,7 @@ del %CD%\%AppName%.bat
 del %CD%\%AppName%.pdb
 del %CD%\%AppName%.xml
 
+del %CD%\temp
 
 del %CD%\%AppName%\bin\Debug\%AppName%.exe
 del %CD%\%AppName%\bin\Debug\%AppName%.pdb
