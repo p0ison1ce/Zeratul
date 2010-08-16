@@ -1,4 +1,3 @@
-@echo off
 
 : By:        Fallensn0w
 : Usage:  Clean up before pushing to gitHub.
@@ -12,6 +11,7 @@ del %CD%\%AppName%.bat
 
 del %CD%\%AppName%.pdb
 del %CD%\%AppName%.xml
+del %CD%\%AppName%.bat
 
 del %CD%\temp
 
@@ -28,3 +28,5 @@ del %CD%\%AppName%\obj\Release\%AppName%.xml
 del %CD%\%AppName%\obj\Debug\%AppName%.exe
 del %CD%\%AppName%\obj\Debug\%AppName%.pdb
 del %CD%\%AppName%\obj\Debug\%AppName%.xml
+
+del %CD%\BUILD\*.*
