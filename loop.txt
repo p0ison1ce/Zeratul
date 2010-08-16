@@ -1,2 +1,0 @@
-setenv auto-boot false
-saveenv

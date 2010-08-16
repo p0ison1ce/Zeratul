@@ -1,3 +1,0 @@
-setenv auto-boot true
-saveenv
-reboot
