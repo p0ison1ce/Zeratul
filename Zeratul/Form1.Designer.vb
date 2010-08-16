@@ -161,7 +161,7 @@ Partial Class zForm
         Me.LinkLabel1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.LinkLabel1.AutoSize = True
         Me.LinkLabel1.Font = New System.Drawing.Font("Arial Black", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LinkLabel1.Location = New System.Drawing.Point(144, 372)
+        Me.LinkLabel1.Location = New System.Drawing.Point(141, 374)
         Me.LinkLabel1.Name = "LinkLabel1"
         Me.LinkLabel1.Size = New System.Drawing.Size(90, 18)
         Me.LinkLabel1.TabIndex = 9
@@ -217,31 +217,35 @@ Partial Class zForm
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(9, 370)
+        Me.Button3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Button3.BackColor = System.Drawing.SystemColors.Control
+        Me.Button3.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button3.Location = New System.Drawing.Point(9, 371)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(129, 22)
+        Me.Button3.Size = New System.Drawing.Size(117, 22)
         Me.Button3.TabIndex = 10
         Me.Button3.Text = "Check for updates"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.Button3.UseVisualStyleBackColor = False
         '
         'zForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(668, 395)
-        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.textBox1)
         Me.Controls.Add(Me.textBox2)
+        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.button1)
         Me.Controls.Add(Me.RadioButton3)
         Me.Controls.Add(Me.RadioButton4)
         Me.Controls.Add(Me.button2)
-        Me.Controls.Add(Me.LinkLabel1)
         Me.Controls.Add(Me.RadioButton2)
         Me.Controls.Add(Me.RadioButton1)
+        Me.Controls.Add(Me.LinkLabel1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.Name = "zForm"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Zeratul -- Version: 0.2 -- By: Fallensn0w"
         Me.textBox2_Menu.ResumeLayout(False)
         Me.ResumeLayout(False)
