@@ -3,8 +3,8 @@ Imports System.IO
 Public Class zForm
 
     Public WithEvents Proc As Process
+    Public iVersion As String = "0.2.5.3 (Dark Sn0w Rabbit)"
 
-    Dim iVersion As String = "0.2.5.1 (Dark Sn0w Rabbit)"
 
 #Region "Outputs from iRecovery.exe" ' (In order by iRecovery.exe)
     Dim iRecoveryInfo As String = "iRecovery - Recovery Utility" & vbCrLf & "by westbaer" & vbCrLf & "Thanks to pod2g, tom3q, planetbeing, geohot and posixninja."
@@ -83,37 +83,6 @@ Public Class zForm
     End Sub
 #End Region
 
-    Private Sub zCheck(ByVal Location_VersionFile As String, ByVal Location_Zeratul As String)
-        ' A beta version of zCheck.
-        ' A way to search for new verisons for Zeratul using a file on the host.
-
-        If My.Computer.Network.IsAvailable Then
-
-            If System.IO.File.Exists("temp") Then System.IO.File.Delete("temp")
-            My.Computer.Network.DownloadFile(Location_VersionFile, "temp")
-            temp = GetFileContents("temp")
-
-            If Not temp = iVersion Then
-
-                curr = MsgBox( _
-                                             "A new update of Zeratul was found!" & vbCrLf & vbCrLf & _
-                                             "Current Version: " & iVersion & vbCrLf & _
-                                             "Available for download: " & temp & vbCrLf & vbCrLf & _
-                                             "Downloading a new version is strongly recommended" & vbCrLf & _
-                                             "Woud you like to download the new version ?", _
-                MsgBoxStyle.YesNo)
-
-                If curr = vbYes Then
-                    My.Computer.Network.DownloadFile(Location_Zeratul, Environment.GetFolderPath(Environment.SpecialFolder.Desktop) & "\Zeratul.zip")
-                    MsgBox("Zeratul Version " & temp & " is now downloaded and located at your desktop.")
-                    End
-                End If
-
-            End If
-
-
-        End If
-    End Sub
 
     Private Sub button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles button1.Click
         button1.Text = "Sending.." : button1.Enabled = False
@@ -152,15 +121,19 @@ Public Class zForm
 
 
     Private Sub zForm_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
-        Proc.StandardInput.WriteLine("/exit")
+        'Proc.StandardInput.WriteLine("/exit")
+        End
     End Sub
 
 
     Private Sub zLoad(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
+        zCheck()
+
         Me.Text = "Zeratul -- Version: " & iVersion & " -- By: Fallensn0w"
 
         If System.IO.File.Exists("Zeratul.bat") = False Then
+
             BatData = _
                             ": Zeratul.bat" & vbCrLf & ": Purpose: Used for fixing the startup bug!" & vbCrLf & "" & vbCrLf & "@echo off" & vbCrLf & _
                             ":Fallensn0w" & vbCrLf & "set /p ""CMD=" & vbCrLf & "%CMD%" & vbCrLf & "CLS" & vbCrLf & "GoTo Fallensn0w" & vbCrLf
@@ -172,17 +145,12 @@ Public Class zForm
         Proc = New Process
         Proc.StartInfo.FileName = "Zeratul.bat"
 
-        ' this could work.
-        'Proc.StartInfo.FileName = "irecovery.exe"
-        ' Proc.StartInfo.Arguments = " -s"
-
         Proc.StartInfo.RedirectStandardInput = True : Proc.StartInfo.RedirectStandardOutput = True
         Proc.StartInfo.UseShellExecute = False : Proc.StartInfo.CreateNoWindow = True
         Proc.Start.ToString()
 
         Proc.BeginOutputReadLine()
 
-        zButton_Update(sender, e)
 
     End Sub
 
@@ -194,6 +162,47 @@ Public Class zForm
         If e.Button = Windows.Forms.MouseButtons.Right Then
             textBox2.ContextMenuStrip = textBox2_Menu
         End If
+    End Sub
+
+    Private Sub zCheck()
+
+        ZeratulVersion = "http://fallensn0w.host22.com/Zeratul_Version"
+        ZeratulZip = "http://fallensn0w.host22.com/Zeratul.zip"
+
+
+        If System.IO.File.Exists("temp") Then System.IO.File.Delete("temp")
+
+        On Error GoTo errz 'Resume Next
+        My.Computer.Network.DownloadFile(ZeratulVersion, "temp")
+        temp = GetFileContents("temp")
+
+
+        If iVersion = temp Then
+            Me.Button3.Text = "No new updates"
+            Me.Button3.Enabled = False
+            Exit Sub
+        End If
+
+        zupdate = MessageBox.Show( _
+                                                            "A new update for Zeratul was found!" & vbCrLf & vbCrLf & _
+                                                            "Current Version: " & iVersion & vbCrLf & _
+                                                            "Available for download: " & temp & vbCrLf & vbCrLf & _
+                                                            "Would you like to download the new version?", Me.Text, MessageBoxButtons.YesNo)
+
+
+
+        If zupdate = vbYes Then
+            My.Computer.Network.DownloadFile(textBox2.Text, Environment.GetFolderPath(Environment.SpecialFolder.Desktop) & "\Zeratul.zip")
+            MsgBox("Zeratul Version " & temp & " is now downloaded and located at your desktop.")
+            End
+        End If
+
+        Exit Sub
+
+errz:
+        MessageBox.Show("ERROR: You need internet access for updating Zeratul!", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Stop)
+        End
+
     End Sub
 
     Private Sub RemoveStuff(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles textBox2.TextChanged
@@ -250,9 +259,9 @@ Public Class zForm
             textBox1.Text = Replace(textBox1.Text, "$d", Environment.GetFolderPath(Environment.SpecialFolder.Desktop)) : textBox1.SelectionStart = Len(textBox1.Text)
     End Sub
 
-    Private Sub zButton_Update(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
-        zCheck("http://fallensn0w.host22.com/Zeratul_Version", _
-                   "http://fallensn0w.host22.com/Zeratul.zip")
+
+    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
+        zCheck()
     End Sub
 
 End Class
