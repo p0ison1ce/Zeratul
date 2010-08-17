@@ -49,10 +49,10 @@ Partial Class zForm
         '
         Me.textBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.textBox1.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.textBox1.Location = New System.Drawing.Point(9, 335)
+        Me.textBox1.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.textBox1.Location = New System.Drawing.Point(9, 377)
         Me.textBox1.Name = "textBox1"
-        Me.textBox1.Size = New System.Drawing.Size(463, 29)
+        Me.textBox1.Size = New System.Drawing.Size(500, 27)
         Me.textBox1.TabIndex = 1
         '
         'button2
@@ -62,7 +62,7 @@ Partial Class zForm
         Me.button2.Cursor = System.Windows.Forms.Cursors.Hand
         Me.button2.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.button2.ForeColor = System.Drawing.Color.Red
-        Me.button2.Location = New System.Drawing.Point(579, 335)
+        Me.button2.Location = New System.Drawing.Point(616, 377)
         Me.button2.Name = "button2"
         Me.button2.Size = New System.Drawing.Size(76, 29)
         Me.button2.TabIndex = 4
@@ -75,7 +75,7 @@ Partial Class zForm
         Me.button1.BackColor = System.Drawing.SystemColors.Control
         Me.button1.Cursor = System.Windows.Forms.Cursors.Hand
         Me.button1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.button1.Location = New System.Drawing.Point(478, 335)
+        Me.button1.Location = New System.Drawing.Point(515, 377)
         Me.button1.Name = "button1"
         Me.button1.Size = New System.Drawing.Size(95, 29)
         Me.button1.TabIndex = 3
@@ -88,12 +88,12 @@ Partial Class zForm
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.textBox2.Cursor = System.Windows.Forms.Cursors.Default
-        Me.textBox2.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.textBox2.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.textBox2.Location = New System.Drawing.Point(9, 10)
         Me.textBox2.Multiline = True
         Me.textBox2.Name = "textBox2"
         Me.textBox2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.textBox2.Size = New System.Drawing.Size(646, 321)
+        Me.textBox2.Size = New System.Drawing.Size(683, 363)
         Me.textBox2.TabIndex = 2
         Me.textBox2.Text = "Welcome to Zeratul for the Windows Platform!" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
@@ -108,7 +108,7 @@ Partial Class zForm
         Me.RadioButton1.AutoSize = True
         Me.RadioButton1.Checked = True
         Me.RadioButton1.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RadioButton1.Location = New System.Drawing.Point(252, 373)
+        Me.RadioButton1.Location = New System.Drawing.Point(289, 415)
         Me.RadioButton1.Name = "RadioButton1"
         Me.RadioButton1.Size = New System.Drawing.Size(84, 19)
         Me.RadioButton1.TabIndex = 5
@@ -122,7 +122,7 @@ Partial Class zForm
         Me.RadioButton2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RadioButton2.AutoSize = True
         Me.RadioButton2.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RadioButton2.Location = New System.Drawing.Point(340, 373)
+        Me.RadioButton2.Location = New System.Drawing.Point(377, 415)
         Me.RadioButton2.Name = "RadioButton2"
         Me.RadioButton2.Size = New System.Drawing.Size(88, 19)
         Me.RadioButton2.TabIndex = 6
@@ -135,7 +135,7 @@ Partial Class zForm
         Me.RadioButton3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RadioButton3.AutoSize = True
         Me.RadioButton3.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RadioButton3.Location = New System.Drawing.Point(434, 373)
+        Me.RadioButton3.Location = New System.Drawing.Point(471, 415)
         Me.RadioButton3.Name = "RadioButton3"
         Me.RadioButton3.Size = New System.Drawing.Size(108, 19)
         Me.RadioButton3.TabIndex = 7
@@ -148,7 +148,7 @@ Partial Class zForm
         Me.RadioButton4.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RadioButton4.AutoSize = True
         Me.RadioButton4.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RadioButton4.Location = New System.Drawing.Point(547, 371)
+        Me.RadioButton4.Location = New System.Drawing.Point(584, 413)
         Me.RadioButton4.Name = "RadioButton4"
         Me.RadioButton4.Size = New System.Drawing.Size(108, 19)
         Me.RadioButton4.TabIndex = 8
@@ -161,7 +161,7 @@ Partial Class zForm
         Me.LinkLabel1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.LinkLabel1.AutoSize = True
         Me.LinkLabel1.Font = New System.Drawing.Font("Arial Black", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LinkLabel1.Location = New System.Drawing.Point(141, 374)
+        Me.LinkLabel1.Location = New System.Drawing.Point(141, 413)
         Me.LinkLabel1.Name = "LinkLabel1"
         Me.LinkLabel1.Size = New System.Drawing.Size(90, 18)
         Me.LinkLabel1.TabIndex = 9
@@ -220,9 +220,9 @@ Partial Class zForm
         Me.Button3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Button3.BackColor = System.Drawing.SystemColors.Control
         Me.Button3.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.Location = New System.Drawing.Point(9, 371)
+        Me.Button3.Location = New System.Drawing.Point(9, 410)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(117, 22)
+        Me.Button3.Size = New System.Drawing.Size(126, 25)
         Me.Button3.TabIndex = 10
         Me.Button3.Text = "Check for updates"
         Me.Button3.UseVisualStyleBackColor = False
@@ -231,7 +231,7 @@ Partial Class zForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(668, 395)
+        Me.ClientSize = New System.Drawing.Size(705, 437)
         Me.Controls.Add(Me.textBox1)
         Me.Controls.Add(Me.textBox2)
         Me.Controls.Add(Me.Button3)
