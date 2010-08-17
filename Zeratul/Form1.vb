@@ -3,10 +3,10 @@ Imports System.IO
 Public Class zForm
 
     Public WithEvents Proc As Process
-    Public iVersion As String = "0.2.5.3 (Dark Sn0w Rabbit)"
+    Public iVersion As String = "0.2.5.7 (Dark Sn0w Rabbit)"
 
 
-#Region "Outputs from iRecovery.exe" ' (In order by iRecovery.exe)
+#Region " Outputs from iRecovery.exe "
     Dim iRecoveryInfo As String = "iRecovery - Recovery Utility" & vbCrLf & "by westbaer" & vbCrLf & "Thanks to pod2g, tom3q, planetbeing, geohot and posixninja."
     Dim old_Found As String = "Found iPhone/iPod in Recovery mode" & vbCrLf & "Closing USB connection..."
     Dim irecv_upload As String = "irecv_upload: "
@@ -16,7 +16,7 @@ Public Class zForm
     Dim not_found As String = "No iPhone/iPod found."
 #End Region
 
-#Region "Various of outputs"
+#Region " Various of outputs "
     Dim parser As String = "sending command: "
     Dim ZeratulConsole As String = TimeOfDay.Minute & ":" & TimeOfDay.Second & " | Zeratul Console " & parser
     Dim new_Found As String = "iPhone/iPod Touch/iPad was found. Now closing the USB connection.."
@@ -27,7 +27,7 @@ Public Class zForm
     Dim new_not_found = "No iPhone/iPod Touch found." & vbCrLf
 #End Region
 
-#Region "  Right Click Menu stuff"
+#Region " Right Click Menu stuff "
     Private Sub CutToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CutToolStripMenuItem.Click
         textBox2.Cut()
     End Sub
@@ -39,9 +39,9 @@ Public Class zForm
     End Sub
 #End Region
 
-#Region "  Extra functions"
+#Region " Extra functions"
 
-#Region " Input / Output Functions"
+#Region " Input / Output Functions "
     Public Function GetFileContents(ByVal FullPath As String, Optional ByRef ErrInfo As String = "") As String
         Dim strContents As String = ""
         Dim objReader As StreamReader
@@ -73,7 +73,7 @@ Public Class zForm
 
 #End Region
 
-#Region "Stuff for reading iRecovery.exe"
+#Region " Stuff for reading iRecovery.exe "
     Private Sub Proc_OutputDataReceived(ByVal sender As Object, ByVal e As System.Diagnostics.DataReceivedEventArgs) Handles Proc.OutputDataReceived
         Try : Me.Invoke(New UpdateDelegate(AddressOf UpdateGUI), e.Data) : Catch : End Try
     End Sub
@@ -128,7 +128,7 @@ Public Class zForm
 
     Private Sub zLoad(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-        zCheck()
+        'zCheck()
 
         Me.Text = "Zeratul -- Version: " & iVersion & " -- By: Fallensn0w"
 
@@ -155,27 +155,32 @@ Public Class zForm
     End Sub
 
     Private Sub textBox1_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles textBox1.KeyDown
-        If e.KeyCode = Keys.Enter Then button1_Click(sender, e)
+        If e.KeyCode = Keys.Enter Then _
+            button1_Click(sender, e)
     End Sub
 
     Private Sub textBox2_MouseUp(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles textBox2.MouseUp
-        If e.Button = Windows.Forms.MouseButtons.Right Then
+        If e.Button = Windows.Forms.MouseButtons.Right Then _
             textBox2.ContextMenuStrip = textBox2_Menu
-        End If
     End Sub
 
     Private Sub zCheck()
 
         ZeratulVersion = "http://fallensn0w.host22.com/Zeratul_Version"
         ZeratulZip = "http://fallensn0w.host22.com/Zeratul.zip"
-
+        ZeratulNew = "http://fallensn0w.host22.com/Zeratul_New"
 
         If System.IO.File.Exists("temp") Then System.IO.File.Delete("temp")
+        If System.IO.File.Exists("new") Then System.IO.File.Delete("new")
 
-        On Error GoTo errz 'Resume Next
+
+        '  On Error Resume Next
+        On Error GoTo errz
         My.Computer.Network.DownloadFile(ZeratulVersion, "temp")
-        temp = GetFileContents("temp")
+        My.Computer.Network.DownloadFile(ZeratulNew, "new")
 
+        temp = GetFileContents("temp")
+        tempdata = GetFileContents("new")
 
         If iVersion = temp Then
             Me.Button3.Text = "No new updates"
@@ -184,16 +189,18 @@ Public Class zForm
         End If
 
         zupdate = MessageBox.Show( _
-                                                            "A new update for Zeratul was found!" & vbCrLf & vbCrLf & _
-                                                            "Current Version: " & iVersion & vbCrLf & _
-                                                            "Available for download: " & temp & vbCrLf & vbCrLf & _
-                                                            "Would you like to download the new version?", Me.Text, MessageBoxButtons.YesNo)
+                                                                "A new update for Zeratul was found!" & vbCrLf & vbCrLf & _
+                                                                "Current Version: " & iVersion & vbCrLf & _
+                                                                "Available for download: " & temp & vbCrLf & vbCrLf & _
+                                                                "Would you like to download the new version?", _
+        Me.Text, MessageBoxButtons.YesNo)
 
 
 
         If zupdate = vbYes Then
-            My.Computer.Network.DownloadFile(textBox2.Text, Environment.GetFolderPath(Environment.SpecialFolder.Desktop) & "\Zeratul.zip")
-            MsgBox("Zeratul Version " & temp & " is now downloaded and located at your desktop.")
+            My.Computer.Network.DownloadFile(ZeratulZip, Environment.GetFolderPath(Environment.SpecialFolder.Desktop) & "\Zeratul.zip")
+            MsgBox("Zeratul Version " & temp & " is now downloaded and located at your desktop." & vbCrLf & vbCrLf & _
+                         "New stuff for " & temp & ":" & vbCrLf & vbCrLf & tempdata, MsgBoxStyle.Information, Me.Text)
             End
         End If
 
@@ -201,7 +208,7 @@ Public Class zForm
 
 errz:
         MessageBox.Show("ERROR: You need internet access for updating Zeratul!", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Stop)
-        End
+        Exit Sub
 
     End Sub
 
@@ -210,6 +217,7 @@ errz:
         ' Cleaning stuff from iRecovery that doesn't give any useful information... / Making everything look CLEANER.
 
         textBox2.Text = textBox2.Text.Replace("", "") ' ive seriously no idea why it pop-ups a female icon lol
+        '                                                                       guess its vbCrLf as an icon for the font i'm using on textBox2
 
         textBox2.Text = textBox2.Text.Replace("irecovery.exe -c", Nothing)
         textBox2.Text = textBox2.Text.Replace("irecovery.exe -k", Nothing)
@@ -223,20 +231,19 @@ errz:
         textBox2.Text = Replace(textBox2.Text, old_Found, new_Found)
         textBox2.Text = Replace(textBox2.Text, Split(old_Found, vbCrLf)(0), new_Found)
         textBox2.Text = Replace(textBox2.Text, not_found, new_not_found)
+        textBox2.Text = Replace(textBox2.Text, vbCrLf & vbCrLf & new_not_found, vbCrLf & new_not_found)
 
         textBox2.Text = Replace(textBox2.Text, irecv_upload, Nothing)
         textBox2.Text = Replace(textBox2.Text, irecv_exploit, Nothing)
         textBox2.Text = Replace(textBox2.Text, irecv_list, ZeratulConsole)
         textBox2.Text = Replace(textBox2.Text, irecv_list_Sending, ZeratulConsole)
 
+
         textBox2.SelectionStart = Len(textBox2.Text)
         textBox2.ScrollToCaret()
 
     End Sub
 
-    Private Sub Website_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LinkLabel1.Click
-        Process.Start(LinkLabel1.Text)
-    End Sub
 
     Private Sub LockTheOutputTextToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LockTheOutputTextToolStripMenuItem.Click
         If textBox2.ReadOnly = False Then
@@ -249,9 +256,9 @@ errz:
     End Sub
 
     Private Sub zForm_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Resize
-        If Me.Width <= 615 Then
-            Me.Width = 615
-        End If
+        'If Me.Width <= 615 Then
+        'Me.Width = 615
+        'End If
     End Sub
 
     Private Sub textBox1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles textBox1.TextChanged
@@ -262,6 +269,10 @@ errz:
 
     Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
         zCheck()
+    End Sub
+
+    Private Sub LinkLabel1_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
+        Process.Start("http://fallensn0w.host22.com")
     End Sub
 
 End Class
