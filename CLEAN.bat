@@ -14,6 +14,9 @@ del %CD%\%AppName%.xml
 del %CD%\%AppName%.bat
 
 del %CD%\temp
+del %CD%\new
+del %CD%\Zeratul_New
+
 
 del %CD%\%AppName%\bin\Debug\%AppName%.exe
 del %CD%\%AppName%\bin\Debug\%AppName%.pdb
@@ -29,4 +32,5 @@ del %CD%\%AppName%\obj\Debug\%AppName%.exe
 del %CD%\%AppName%\obj\Debug\%AppName%.pdb
 del %CD%\%AppName%\obj\Debug\%AppName%.xml
 
-del %CD%\BUILD\*.*
+del /Q %CD%\BUILD\*.*
+rmdir BUILD
