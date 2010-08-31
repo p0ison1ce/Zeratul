@@ -1,12 +1,28 @@
+'######################################
+'##                                                                    ##
+'##   Zeratul -- By: Fallensn0w                              ##                   
+'##   """"""""""""""""""""""""""""                              ##
+'##                                                                    ##
+'##   This program is open-source                       ##
+'##   And available at github.                               ##
+'##                                                                    ##
+'##   Goal of this program is to                           ##
+'##   make a fast and easy gui for                       ##
+'##   irecovery so normal users can                     ##
+'##   use irecovery very easily.                             ##
+'##                                                                    ##
+'######################################
+
 Imports System.IO
 
 Public Class zForm
 
+    ' Purpose: If any changes, it can be easily made here.
+#Region " Outputs from iRecovery.exe "
+
     Public WithEvents Proc As Process
     Public iVersion As String = "0.2.5.7 (Dark Sn0w Rabbit)"
 
-
-#Region " Outputs from iRecovery.exe "
     Dim iRecoveryInfo As String = "iRecovery - Recovery Utility" & vbCrLf & "by westbaer" & vbCrLf & "Thanks to pod2g, tom3q, planetbeing, geohot and posixninja."
     Dim old_Found As String = "Found iPhone/iPod in Recovery mode" & vbCrLf & "Closing USB connection..."
     Dim irecv_upload As String = "irecv_upload: "
@@ -14,10 +30,8 @@ Public Class zForm
     Dim irecv_list As String = "irecv_list: "
     Dim irecv_list_Sending As String = "irecv_list: sending> "
     Dim not_found As String = "No iPhone/iPod found."
-#End Region
-
-#Region " Various of outputs "
     Dim parser As String = "sending command: "
+
     Dim ZeratulConsole As String = TimeOfDay.Minute & ":" & TimeOfDay.Second & " | Zeratul Console " & parser
     Dim new_Found As String = "iPhone/iPod Touch/iPad was found. Now closing the USB connection.."
     Dim new_UploadFile As String = "Uploading file"
@@ -39,24 +53,22 @@ Public Class zForm
     End Sub
 #End Region
 
-#Region " Extra functions"
-
 #Region " Input / Output Functions "
-    Public Function GetFileContents(ByVal FullPath As String, Optional ByRef ErrInfo As String = "") As String
-        Dim strContents As String = ""
-        Dim objReader As StreamReader
-        Try
 
+    ' Purpose: Used for gathering data from any file
+    Public Function GetFileContents(ByVal FullPath As String, Optional ByRef ErrInfo As String = "") As String
+        Dim strContents As String = "", objReader As StreamReader
+        Try
             objReader = New StreamReader(FullPath)
             strContents = objReader.ReadToEnd()
             objReader.Close()
-
         Catch Ex As Exception
             ErrInfo = Ex.Message
         End Try
         Return strContents
     End Function
 
+    ' Purpose: Used for saving any data to any file.
     Public Function SaveTextToFile(ByVal strData As String, ByVal FullPath As String, Optional ByVal ErrInfo As String = "") As Boolean
         Dim bAns As Boolean = False, objReader As StreamWriter
         Try
@@ -69,15 +81,18 @@ Public Class zForm
         End Try
         Return bAns
     End Function
-#End Region
 
 #End Region
 
 #Region " Stuff for reading iRecovery.exe "
+
+    ' Purpose: When we receive output data we need to invoke it.
     Private Sub Proc_OutputDataReceived(ByVal sender As Object, ByVal e As System.Diagnostics.DataReceivedEventArgs) Handles Proc.OutputDataReceived
         Try : Me.Invoke(New UpdateDelegate(AddressOf UpdateGUI), e.Data) : Catch : End Try
     End Sub
+
     Private Delegate Sub UpdateDelegate(ByVal Output As String)
+    ' Purpose: Used for updating textBox.
     Private Sub UpdateGUI(ByVal Output As String)
         If Output.Length > 0 Then textBox2.AppendText(Output & Environment.NewLine)
     End Sub
@@ -91,7 +106,7 @@ Public Class zForm
         If RadioButton1.Checked Then
             'Proc.StandardInput.WriteLine(textBox1.Text)
             Proc.StandardInput.WriteLine("irecovery.exe -c " & Chr(34) & textBox1.Text & Chr(34))
-            textBox2.Text += "Zeratul Console -> " & textBox1.Text
+            textBox2.Text += "Zeratul Console (Command) -> " & textBox1.Text
         End If
 
         If RadioButton2.Checked Then
@@ -101,7 +116,7 @@ Public Class zForm
 
         If RadioButton3.Checked Then
             Proc.StandardInput.WriteLine("irecovery.exe -k " & Chr(34) & textBox1.Text & Chr(34))
-            textBox2.Text += "Zeratul Console (Exploiting) -> " & textBox1.Text
+            textBox2.Text += "Zeratul Console (Exploit) -> " & textBox1.Text
         End If
 
         If RadioButton4.Checked Then
@@ -121,14 +136,12 @@ Public Class zForm
 
 
     Private Sub zForm_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
-        'Proc.StandardInput.WriteLine("/exit")
+        Proc.StandardInput.WriteLine("exit")
         End
     End Sub
 
 
     Private Sub zLoad(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
-        'zCheck()
 
         Me.Text = "Zeratul -- Version: " & iVersion & " -- By: Fallensn0w"
 
